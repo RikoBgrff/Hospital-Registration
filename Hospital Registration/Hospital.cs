@@ -24,55 +24,82 @@ namespace Hospital_Registration
         {
             Name = "Qilman",
             Surname = "Qilmanov",
-            WorkExperience = 10
+            WorkExperience = 10,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor pediatrician2 = new Doctor
         {
             Name = "Qurban",
             Surname = "Qurbanov",
-            WorkExperience = 9
+            WorkExperience = 9,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor traumatologist = new Doctor
         {
             Name = "Mehdi",
             Surname = "Huseynov",
-            WorkExperience = 15
+            WorkExperience = 15,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor traumatologist2 = new Doctor
         {
             Name = "Suleyman",
             Surname = "Meherremli",
-            WorkExperience = 11
+            WorkExperience = 11,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor traumatologist3 = new Doctor
         {
             Name = "Mehriban",
             Surname = "Necefli",
-            WorkExperience = 14
+            WorkExperience = 14,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor dentist = new Doctor
         {
             Name = "Ilqar",
             Surname = "Mehdi",
-            WorkExperience = 18
+            WorkExperience = 18,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor dentist2 = new Doctor
         {
             Name = "Musa",
             Surname = "Ismayilov",
-            WorkExperience = 21
+            WorkExperience = 21,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor dentist3 = new Doctor
         {
             Name = "Mustafa",
             Surname = "Rasim",
-            WorkExperience = 10
+            WorkExperience = 10,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         Doctor dentist4 = new Doctor
         {
             Name = "Azer",
             Surname = "Suleyman",
-            WorkExperience = 5
+            WorkExperience = 5,
+            Time1 = false,
+            Time2 = false,
+            Time3 = false
         };
         public string time { get; set; } = "09:00-11:00";
         public string time2 { get; set; } = "12:00-14:00";
@@ -99,13 +126,6 @@ namespace Hospital_Registration
         }
         public void ShowDoctorsTime(Doctor doctor)
         {
-            if (doctor.Time1 != false)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(time);
-                Console.ResetColor();
-
-            }
             if (doctor.Time2 != false)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -128,17 +148,16 @@ namespace Hospital_Registration
             string timeChoice = Console.ReadLine();
             if (timeChoice == "1")
             {
+                if (doctor.Time1 != false)
+                {
+                    Console.WriteLine("you can not reserve this time");
+                }
                 if (doctor.Time1 == false)
                 {
-                    Console.WriteLine($"You arranged '09:00 - 11:00' for meet with Doctor{doctor.Name}");
+                    Console.WriteLine($"You reserved '09:00 - 11:00' for meet with Doctor {doctor.Name}");
                     Thread.Sleep(2000);
                     Console.Clear();
                     management.Start();
-                    doctor.Time1 = true;
-                }
-                if(doctor.Time1 != false)
-                {
-                    Console.WriteLine("you can not arrange this time");
                 }
                 if (doctor.Time2 == false)
                 {
@@ -181,7 +200,6 @@ namespace Hospital_Registration
                 }
 
             }
-            //tramatologiya
             if (department == "2")
             {
                 FillTraumatologists();
